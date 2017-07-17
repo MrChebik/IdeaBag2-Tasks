@@ -7,13 +7,13 @@ public class DateInputUtils {
     public static int[] createIndexes(String[] types) {
         int[] indexes = new int[3];
         for (int i = 0; i < 3; i++) {
-            if (types[i].equals("mm")) {
+            if (types[i].equalsIgnoreCase("mm")) {
                 indexes[0] = i;
             }
-            if (types[i].equals("dd")) {
+            if (types[i].equalsIgnoreCase("dd")) {
                 indexes[1] = i;
             }
-            if (types[i].equals("yyyy")) {
+            if (types[i].equalsIgnoreCase("yyyy")) {
                 indexes[2] = i;
             }
         }
