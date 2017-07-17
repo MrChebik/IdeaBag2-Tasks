@@ -9,14 +9,14 @@ not to rely on any Time library like for example in Ruby - Time() class and make
 ### Input:
 2017
 
-### Output:  
+### Output:
 January 13, 2017  
 October 13, 2017
 
-### Input: 
+### Input:
 04/14/2017 - 07/14/2018 (mm/dd/yyyy)
 
-### Output:  
+### Output:
 October 13, 2017  
 April 13, 2018  
 July 13, 2018
