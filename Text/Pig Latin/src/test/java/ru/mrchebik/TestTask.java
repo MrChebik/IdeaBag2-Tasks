@@ -21,4 +21,9 @@ public class TestTask {
     public void testInputBanana() {
         assertEquals("ananabay", word.transformToPigLatin("banana"));
     }
+
+    @Test
+    public void testInput123() {
+        assertEquals("Translation error! Numbers are not supported!\n123", word.transformToPigLatin("123"));
+    }
 }

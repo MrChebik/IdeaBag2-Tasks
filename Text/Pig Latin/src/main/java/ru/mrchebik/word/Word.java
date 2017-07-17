@@ -65,7 +65,7 @@ public class Word extends WordUtils {
         }
 
         if (indexOfNumbers == words.length) {
-            return "Translation error! Numbers is not supported!\n" + line;
+            return "Translation error! Numbers are not supported!\n" + line;
         }
 
         return merge(words);

@@ -9,11 +9,26 @@ public class WordCheckUtils {
     public static final String SYMBOL_PAIR_0 = "pair0";
     public static final String SYMBOL_PAIR_1 = "pair1";
 
+    public final String[] consonantClusters = new String[] {"sch", "str", "scr", "spl", "squ", "thr", "shr", "th", "tr",
+            "dr", "bl", "fl", "sk", "st", "sw", "sn", "sm", "wh", "pr", "cl", "pr", "sh", "tw", "wr", "cr", "pl", "fr",
+            "gr", "sc"
+    };
+
     public final char[] vowels       = new char[] {'a', 'e', 'i', 'u', 'y', 'o'};
     public final char[] symbolsBegin = new char[] {'#', '$', '%'};
     public final char[] symbolsEnd   = new char[] {'.', ',', '?', '!'};
     public final char[] symbolsPair0 = new char[] {'(', '{', '[', '<', '"', '\''};
     public final char[] symbolsPair1 = new char[] {')', '}', ']', '>', '"', '\''};
+
+    public String checkToConsonantClusters(String line) {
+        for (String consonantCluster : consonantClusters) {
+            if (line.contains(consonantCluster)) {
+                return consonantCluster;
+            }
+        }
+
+        return null;
+    }
 
     public boolean checkToSymbols(char letter, String type) {
         char[] checkedArray = type.equals("begin") ? symbolsBegin :
