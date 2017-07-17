@@ -10,10 +10,12 @@ public class WordUtils extends WordCheckUtils {
 
         for (int i = 1; i < word.length(); i++) {
             if (!checkToVowels(word.charAt(i))) {
-                if ((cluster = checkToConsonantClusters(word.substring(i, i + 3))) != null) {
-                    cutWord(word, i + cluster.length());
-                } else {
-                    cutWord(word, i + 1);
+                if (!isContainCluster(word, i)) {
+                    if (word.length() > 2) {
+                        cutWord(word, i + 1);
+                    } else {
+                        cutWord(word, i);
+                    }
                 }
 
                 break;
@@ -30,9 +32,7 @@ public class WordUtils extends WordCheckUtils {
     protected String transformConsonants(String word) {
         initialize();
 
-        if (word.length() > 2 && (cluster = checkToConsonantClusters(word.substring(0, 3))) != null) {
-            cutWord(word, cluster.length());
-        } else {
+        if (!isContainCluster(word, 0)) {
             for (int i = 1; i < word.length(); i++) {
                 if (checkToVowels(word.charAt(i))) {
                     cutWord(word, i);
@@ -47,6 +47,19 @@ public class WordUtils extends WordCheckUtils {
         }
 
         return beginWord + endWord + "ay";
+    }
+
+    private boolean isContainCluster(String word, int length) {
+        if (word.length() > length + 3 &&
+                (
+                        (cluster = checkToConsonantClusters(word.substring(length, length + 3), CLUSTER_3)) != null ||
+                        (cluster = checkToConsonantClusters(word.substring(length, length + 2), CLUSTER_2)) != null)
+                ) {
+                cutWord(word, length + cluster.length());
+                return true;
+        }
+
+        return false;
     }
 
     private void cutWord(String word,

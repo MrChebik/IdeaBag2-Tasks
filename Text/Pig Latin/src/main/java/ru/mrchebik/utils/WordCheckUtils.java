@@ -9,9 +9,15 @@ public class WordCheckUtils {
     public static final String SYMBOL_PAIR_0 = "pair0";
     public static final String SYMBOL_PAIR_1 = "pair1";
 
-    public final String[] consonantClusters = new String[] {"sch", "str", "scr", "spl", "squ", "thr", "shr", "th", "tr",
-            "dr", "bl", "fl", "sk", "st", "sw", "sn", "sm", "wh", "pr", "cl", "pr", "sh", "tw", "wr", "cr", "pl", "fr",
-            "gr", "sc"
+    public static final String CLUSTER_3 = "cluster3";
+    public static final String CLUSTER_2 = "cluster2";
+
+    public final String[] consonantClusters3 = new String[] {
+            "sch", "str", "scr", "spl", "squ", "thr", "shr"
+    };
+    public final String[] consonantClusters2 = new String[] {
+            "th", "tr", "dr", "bl", "fl", "sk", "st", "sw", "sn", "sm", "wh", "pr", "cl", "pr", "sh", "tw", "wr", "cr",
+            "pl", "fr", "gr", "sc"
     };
 
     public final char[] vowels       = new char[] {'a', 'e', 'i', 'u', 'y', 'o'};
@@ -20,9 +26,9 @@ public class WordCheckUtils {
     public final char[] symbolsPair0 = new char[] {'(', '{', '[', '<', '"', '\''};
     public final char[] symbolsPair1 = new char[] {')', '}', ']', '>', '"', '\''};
 
-    public String checkToConsonantClusters(String line) {
-        for (String consonantCluster : consonantClusters) {
-            if (line.contains(consonantCluster)) {
+    public String checkToConsonantClusters(String line, String type) {
+        for (String consonantCluster : type.equals(CLUSTER_2) ? consonantClusters2 : consonantClusters3) {
+            if (line.equalsIgnoreCase(consonantCluster)) {
                 return consonantCluster;
             }
         }
@@ -31,9 +37,9 @@ public class WordCheckUtils {
     }
 
     public boolean checkToSymbols(char letter, String type) {
-        char[] checkedArray = type.equals("begin") ? symbolsBegin :
-                type.equals("end") ? symbolsEnd :
-                        type.equals("pair0") ? symbolsPair0 : symbolsPair1;
+        char[] checkedArray = type.equals(SYMBOL_BEGIN) ? symbolsBegin :
+                type.equals(SYMBOL_END) ? symbolsEnd :
+                        type.equals(SYMBOL_PAIR_0) ? symbolsPair0 : symbolsPair1;
 
         for (char symbol : checkedArray) {
             if (symbol == letter) {
@@ -45,8 +51,9 @@ public class WordCheckUtils {
     }
 
     public boolean checkToVowels(char letter) {
+        char lowerCase = Character.toLowerCase(letter);
         for (char vowel : vowels) {
-            if (vowel == letter) {
+            if (vowel == lowerCase) {
                 return true;
             }
         }

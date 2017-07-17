@@ -42,12 +42,14 @@ public class Word extends WordUtils {
                 words[i] = words[i].substring(0, words[i].length() - 1);
             }
 
-            if (checkToVowels(words[i].charAt(0))) {
-                words[i] = transformVowels(words[i]);
-            } else if (checkToNumbers(words[i].charAt(0))) {
-                indexOfNumbers++;
-            } else {
-                words[i] = transformConsonants(words[i]);
+            if (words[i].matches("[a-zA-Z'`’]*")) {
+                if (checkToVowels(words[i].charAt(0))) {
+                    words[i] = transformVowels(words[i]);
+                } else if (checkToNumbers(words[i].charAt(0))) {
+                    indexOfNumbers++;
+                } else {
+                    words[i] = transformConsonants(words[i]);
+                }
             }
 
             if (!"".equals(bufferBegin)) {
