@@ -4,6 +4,11 @@ package ru.mrchebik.utils;
  * Created by mrchebik on 7/17/17.
  */
 public class WordCheckUtils {
+    public static final String SYMBOL_BEGIN  = "begin";
+    public static final String SYMBOL_END    = "end";
+    public static final String SYMBOL_PAIR_0 = "pair0";
+    public static final String SYMBOL_PAIR_1 = "pair1";
+
     public final char[] vowels       = new char[] {'a', 'e', 'i', 'u', 'y', 'o'};
     public final char[] symbolsBegin = new char[] {'#', '$', '%'};
     public final char[] symbolsEnd   = new char[] {'.', ',', '?', '!'};

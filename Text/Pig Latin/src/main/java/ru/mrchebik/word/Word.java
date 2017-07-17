@@ -1,6 +1,5 @@
 package ru.mrchebik.word;
 
-import ru.mrchebik.symbol.Symbol;
 import ru.mrchebik.utils.WordUtils;
 
 import java.util.Stack;
@@ -22,7 +21,7 @@ public class Word extends WordUtils {
             char firstChar = words[i].charAt(0);
             char lastChar = words[i].charAt(words[i].length() - 1);
 
-            if (checkToSymbols(firstChar, Symbol.SYMBOL_PAIR_0) && checkToSymbols(lastChar, Symbol.SYMBOL_PAIR_1)) {
+            if (checkToSymbols(firstChar, SYMBOL_PAIR_0) && checkToSymbols(lastChar, SYMBOL_PAIR_1)) {
                 bufferBegin += firstChar;
                 bufferEnd.add(lastChar);
 
@@ -31,13 +30,13 @@ public class Word extends WordUtils {
                 lastChar  = words[i].charAt(words[i].length() - 1);
             }
 
-            if (checkToSymbols(firstChar, Symbol.SYMBOL_BEGIN)) {
+            if (checkToSymbols(firstChar, SYMBOL_BEGIN)) {
                 bufferBegin += firstChar;
 
                 words[i] = words[i].substring(1);
             }
 
-            if (checkToSymbols(lastChar, Symbol.SYMBOL_END)) {
+            if (checkToSymbols(lastChar, SYMBOL_END)) {
                 bufferEnd.add(lastChar);
 
                 words[i] = words[i].substring(0, words[i].length() - 1);
