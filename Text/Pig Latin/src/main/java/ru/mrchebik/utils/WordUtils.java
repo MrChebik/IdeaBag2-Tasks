@@ -3,12 +3,11 @@ package ru.mrchebik.utils;
 public class WordUtils extends WordCheckUtils {
     private String beginWord;
     private String endWord;
+    private String cluster;
 
     protected String transformVowels(String word) {
-        beginWord = "";
-        endWord = "";
+        initialize();
 
-        String cluster;
         for (int i = 1; i < word.length(); i++) {
             if (!checkToVowels(word.charAt(i))) {
                 if ((cluster = checkToConsonantClusters(word.substring(i, i + 3))) != null) {
@@ -19,15 +18,18 @@ public class WordUtils extends WordCheckUtils {
 
                 break;
             }
+
+            if (beginWord.equals("")) {
+                return word + "ay";
+            }
         }
+
         return beginWord + endWord + "ay";
     }
 
     protected String transformConsonants(String word) {
-        beginWord = "";
-        endWord = "";
+        initialize();
 
-        String cluster;
         if (word.length() > 2 && (cluster = checkToConsonantClusters(word.substring(0, 3))) != null) {
             cutWord(word, cluster.length());
         } else {
@@ -56,5 +58,11 @@ public class WordUtils extends WordCheckUtils {
             beginWord = Character.toUpperCase(beginWord.charAt(0)) + beginWord.substring(1);
             endWord = Character.toLowerCase(endWord.charAt(0)) + endWord.substring(1);
         }
+    }
+
+    private void initialize() {
+        beginWord = "";
+        endWord = "";
+        cluster = "";
     }
 }
