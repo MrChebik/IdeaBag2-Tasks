@@ -22,7 +22,7 @@ public class WordUtils extends WordCheckUtils {
             }
 
             if (beginWord.equals("")) {
-                return word + "ay";
+                cutWord(word, 1);
             }
         }
 
@@ -42,7 +42,7 @@ public class WordUtils extends WordCheckUtils {
             }
 
             if (beginWord.equals("")) {
-                return word + "ay";
+                cutWord(word, 1);
             }
         }
 
