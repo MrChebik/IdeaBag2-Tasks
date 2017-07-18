@@ -11,6 +11,7 @@
     <modules>
         <module>Numbers/Friday the 13th</module>
         <module>Text/Pig Latin</module>
+        <module>Networking/Port Scanner</module>
     </modules>
 
 
